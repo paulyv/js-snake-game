@@ -11,11 +11,11 @@ var appleArray = [];
 var score = 0;
 var highscore = 0;
 
+
 // CHECK IF LOCALSTORAGE HAS A HIGHSCORE SAVED
 if(localStorage.getItem("highscore") !== null){
 	highscore = localStorage.getItem("highscore");
 }
-
 // TO CREATE POINT OBJECTS
 function Point(x, y) {
 	this.x = x;
@@ -142,6 +142,10 @@ function gameOver() {
 		localStorage.highscore = score;
 		alert("New high score! " + score);
 	}
+	var answer = confirm("New game?");
+	if (answer == true) {
+    location.reload();
+	} 
 }
 
 
