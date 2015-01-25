@@ -1,0 +1,36 @@
+.full {
+    background: url("../res/bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+
+#topic {
+	text-align: center;
+	font-size: 180%;
+	padding-top: 0px;
+	padding-bottom: 10px;
+	font-family: tahoma;
+}
+
+canvas {
+   -moz-opacity:0.8; /* For older FF versions */
+   -khtml-opacity:0.8;
+   opacity:0.8;
+}
+
+
+#nav {
+	margin-bottom:0px;
+	background-color: white;
+	margin-left: 0px;
+}
+.navbar-center
+{
+    width: 100%;
+    left: 0;
+    text-align: center;
+
+}
