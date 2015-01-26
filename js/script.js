@@ -61,7 +61,6 @@ ctx.fillStyle = "#000000";
 ctx.fillRect(0, 0, a_canvas.width, a_canvas.height);
 
 // DRAW SCORE
-
 ctx.fillStyle = "tomato";
 ctx.font="15px Verdana";
 ctx.fillText("Score: "+score, 300, 20);
@@ -85,12 +84,19 @@ if (!isApple) {
 	var apple_x = 0;
 	var apple_y = 0;
 	do {
-		apple_x = Math.floor((Math.random() * 420) + 1);
-		apple_y = Math.floor((Math.random() * 420) + 1);
-	} while (apple_x % 15 == 0 && apple_y % 15 == 0);
+		apple_x = Math.floor((Math.random() * 435));
+		apple_y = Math.floor((Math.random() * 435));
+	} while (apple_x % 15 != 0 && apple_y % 15 != 0);
 
 	appleArray[0] = new Point(apple_x, apple_y);
 	isApple = true;
+
+	// Make sure that the apple is not on top of the snake
+	for (var i = snakeArray.length - 1; i > 2; i--) {
+		if(apple_x == snakeArray[i].x && apple_y == snakeArray[i].y){
+			isApple = false;
+		}
+	}
 }
 
 // DRAW EXISTING APPLE
@@ -115,7 +121,6 @@ if (snakeArray[0].x <= -15 || snakeArray[0].x >= a_canvas.width) {
 }
 
 // CHECK COLLISION WITH AN APPLE
-
 if (snakeArray[0].x <= ((appleArray[0].x) + 10) && snakeArray[0].x >= ((appleArray[0].x) - 10)  && snakeArray[0].y <= ((appleArray[0].y) + 10) && snakeArray[0].y >= ((appleArray[0].y) - 10)) {
 	isApple = false;
 	p = new Point(snakeArray[snakeArray.length - 1].x, snakeArray[snakeArray.length - 1].y);
@@ -124,7 +129,6 @@ if (snakeArray[0].x <= ((appleArray[0].x) + 10) && snakeArray[0].x >= ((appleArr
 }
 
 // CHECK COLLISION WITH THE SNAKE
-
 for (var i = snakeArray.length - 1; i > 2; i--) {
 	if(snakeArray[0].x == snakeArray[i].x && snakeArray[0].y == snakeArray[i].y){
 		clearInterval(gameloop);
@@ -143,9 +147,9 @@ function gameOver() {
 		alert("New high score! " + score);
 	}
 	var answer = confirm("New game?");
-	if (answer == true) {
-    location.reload();
-	} 
+		if (answer == true) {
+    	location.reload();
+		} 
 }
 
 
