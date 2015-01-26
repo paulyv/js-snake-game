@@ -144,12 +144,18 @@ function gameOver() {
 	ctx.fillText("Game Over", a_canvas.width / 2 - 90, a_canvas.height / 2);
 	if(score > highscore) {
 		localStorage.highscore = score;
-		alert("New high score! " + score);
+		var answer = confirm("NEW HIGHSCORE: "+score+ "\nNew game?");
+			if (answer == true) {
+    		location.reload();
+			} 
+	
+	} else {
+		var answer = confirm("New game?");
+			if (answer == true) {
+    		location.reload();
+			} 
 	}
-	var answer = confirm("New game?");
-		if (answer == true) {
-    	location.reload();
-		} 
+	
 }
 
 
